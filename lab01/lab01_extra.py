@@ -1,5 +1,5 @@
 """Optional questions for Lab 1"""
-
+from random import randint
 # If Statements
 
 
@@ -87,20 +87,20 @@ def falling(n, k):
 # Guessing Game
 
 
-from random import randint
-
 LOWER = 1
 UPPER = 10
+
 
 def guess_random():
     """Guess randomly and return the number of guesses."""
     prompt_for_number(LOWER, UPPER)   # asks the user to choose a number
     num_guesses, correct = 0, False
     while not correct:
-        guess = randint(LOWER, UPPER) # randomly guess
+        guess = randint(LOWER, UPPER)  # randomly guess
         correct = is_correct(guess)   # ask user if guess is correct
         num_guesses = num_guesses + 1
     return num_guesses
+
 
 def guess_linear():
     """Guess in increasing order and return the number of guesses."""
@@ -108,7 +108,11 @@ def guess_linear():
     num_guesses = 1
     guess = LOWER
     "*** YOUR CODE HERE ***"
+    while not is_correct(guess):
+        guess += 1
+        num_guesses += 1
     return num_guesses
+
 
 def guess_binary():
     """Return the number of attempted guesses. Implement a faster search
@@ -123,9 +127,17 @@ def guess_binary():
     lower, upper = LOWER, UPPER
     guess = (lower + upper) // 2
     "*** YOUR CODE HERE ***"
+    while not is_correct(guess):
+        if is_too_high(guess):
+            upper = guess - 1
+        else:
+            lower = guess + 1
+        guess = (lower + upper) // 2
+        num_guesses += 1
     return num_guesses
 
 # Receive user input. You do not need to understand the code below this line.
+
 
 def prompt_for_number(lower, upper):
     """Prompt the user for a number between lower and upper. Return None."""
