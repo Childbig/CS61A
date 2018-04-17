@@ -1,12 +1,30 @@
 test = {
   'name': 'Question 10',
-  'points': 2,
+  'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          >>> swap_strategy(33, 60, 8, 6)
+          >>> bacon_strategy(0, 0, margin=8, num_rolls=5)
+          26f5762c932a578994ea1c8fc7fa6c02
+          # locked
+          """,
+          'hidden': False,
+          'locked': True
+        },
+        {
+          'code': r"""
+          >>> bacon_strategy(70, 50, margin=8, num_rolls=5)
+          26f5762c932a578994ea1c8fc7fa6c02
+          # locked
+          """,
+          'hidden': False,
+          'locked': True
+        },
+        {
+          'code': r"""
+          >>> bacon_strategy(50, 70, margin=8, num_rolls=5)
           962aea5f59fc55bd65ccacf4603c8f22
           # locked
           """,
@@ -15,25 +33,24 @@ test = {
         },
         {
           'code': r"""
-          >>> swap_strategy(30, 54, 8, 6)
-          327b19ffebddf93982e1ad2a4a6486f4
-          # locked
-          """,
-          'hidden': False,
-          'locked': True
-        },
-        {
-          'code': r"""
-          >>> swap_strategy(7, 23, 8, 6)
-          6
+          >>> bacon_strategy(32, 4, margin=5, num_rolls=4)
+          0
           """,
           'hidden': False,
           'locked': False
         },
         {
           'code': r"""
-          >>> swap_strategy(7, 26, 8, 6)
+          >>> bacon_strategy(20, 18, margin=9, num_rolls=4)
           0
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> from tests.check_strategy import check_strategy
+          >>> check_strategy(bacon_strategy)
           """,
           'hidden': False,
           'locked': False
@@ -50,7 +67,7 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> swap_strategy(10, 38, 8, 6) # beneficial
+          >>> bacon_strategy(20, 4, margin=3, num_rolls=4)
           0
           """,
           'hidden': False,
@@ -58,15 +75,7 @@ test = {
         },
         {
           'code': r"""
-          >>> swap_strategy(9, 1, 8, 6)
-          6
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> swap_strategy(35, 28, 8, 6)
+          >>> bacon_strategy(20, 23, margin=5, num_rolls=0)
           0
           """,
           'hidden': False,
@@ -74,7 +83,23 @@ test = {
         },
         {
           'code': r"""
-          >>> swap_strategy(37, 24, 8, 6)
+          >>> bacon_strategy(20, 24, margin=7, num_rolls=5)
+          5
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> bacon_strategy(20, 25, margin=7, num_rolls=5)
+          5
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> bacon_strategy(20, 26, margin=11, num_rolls=6)
           6
           """,
           'hidden': False,

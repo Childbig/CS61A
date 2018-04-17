@@ -6,13 +6,7 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> select_dice(4, 24, False).__name__ == 'rerolled'
-          True
-          >>> select_dice(16, 64, False).__name__ == 'rerolled'
-          False
-          >>> select_dice(0, 0, True).__name__ == 'rerolled'
-          True
-          >>> select_dice(50, 80, True).__name__ == 'rerolled'
+          >>> is_swap(19, 91)
           False
           """,
           'hidden': False,
@@ -20,13 +14,23 @@ test = {
         },
         {
           'code': r"""
-          >>> select_dice(4, 25, False) == six_sided
+          >>> is_swap(20, 40)
           True
-          >>> select_dice(3, 4, False) == six_sided
-          False
-          >>> select_dice(0, 0, True) == six_sided
-          False
-          >>> select_dice(60, 80, True) == six_sided
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(40, 20)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(41, 14)
           False
           """,
           'hidden': False,
@@ -34,14 +38,80 @@ test = {
         },
         {
           'code': r"""
-          >>> select_dice(4, 25, False) == four_sided
+          >>> is_swap(13, 32)
           False
-          >>> select_dice(3, 4, False) == four_sided
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(1, 0)
           False
-          >>> select_dice(0, 0, True) == four_sided
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(0, 1)
           False
-          >>> select_dice(50, 80, True) == four_sided
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(3, 0)
+          False
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(0, 3)
+          False
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(10, 1)
+          False
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(1, 10)
+          False
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(34, 17)
           True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(15, 30)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> is_swap(1, 30)
+          False
           """,
           'hidden': False,
           'locked': False

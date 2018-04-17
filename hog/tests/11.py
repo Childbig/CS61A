@@ -1,42 +1,47 @@
 test = {
   'name': 'Question 11',
-  'points': 3,
+  'points': 2,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          >>> check_strategy(hog.final_strategy)
+          >>> swap_strategy(12, 60, 8, 6)
+          962aea5f59fc55bd65ccacf4603c8f22
+          # locked
+          """,
+          'hidden': False,
+          'locked': True
+        },
+        {
+          'code': r"""
+          >>> swap_strategy(30, 54, 8, 6)
+          327b19ffebddf93982e1ad2a4a6486f4
+          # locked
+          """,
+          'hidden': False,
+          'locked': True
+        },
+        {
+          'code': r"""
+          >>> swap_strategy(7, 24, 8, 6)
+          6
           """,
           'hidden': False,
           'locked': False
-        }
-      ],
-      'scored': False,
-      'setup': r"""
-      >>> import hog
-      >>> def check_strategy(strat):
-      ...     for score in range(100):
-      ...         for opp in range(100):
-      ...             num_rolls = strat(score, opp)
-      ...             if not isinstance(num_rolls, int):
-      ...                 raise ValueError("final_strategy({0}, {1}) returned {2}, not an int.".format(score, opp, num_rolls))
-      >>> def max_scoring_num_rolls(dice=lambda: 1):
-      ...     raise RuntimeError("Your final strategy should not call max_scoring_num_rolls.")
-      >>> old_max_scoring_num_rolls = hog.max_scoring_num_rolls
-      >>> hog.max_scoring_num_rolls = max_scoring_num_rolls
-      """,
-      'teardown': r"""
-      >>> hog.max_scoring_num_rolls = old_max_scoring_num_rolls
-      """,
-      'type': 'doctest'
-    },
-    {
-      'cases': [
+        },
         {
           'code': r"""
-          >>> final_win_rate() >= 0.60
-          True
+          >>> swap_strategy(7, 28, 8, 6)
+          0
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> from tests.check_strategy import check_strategy
+          >>> check_strategy(swap_strategy)
           """,
           'hidden': False,
           'locked': False
@@ -44,11 +49,7 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      >>> try:
-      ...     from utils import final_win_rate
-      ... except ImportError:
-      ...     from tests.utils import final_win_rate
-      >>> print('\nFinal strategy win rate:', final_win_rate())
+      >>> from hog import *
       """,
       'teardown': '',
       'type': 'doctest'
@@ -57,30 +58,32 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> final_win_rate() >= 0.70
-          True
+          >>> swap_strategy(10, 28, 8, 6) # beneficial
+          0
           """,
           'hidden': False,
           'locked': False
-        }
-      ],
-      'scored': True,
-      'setup': r"""
-      >>> try:
-      ...     from utils import final_win_rate
-      ... except ImportError:
-      ...     from tests.utils import final_win_rate
-      >>> print('\nFinal strategy win rate:', final_win_rate())
-      """,
-      'teardown': '',
-      'type': 'doctest'
-    },
-    {
-      'cases': [
+        },
         {
           'code': r"""
-          >>> final_win_rate() >= 0.80
-          True
+          >>> swap_strategy(9, 1, 8, 6)
+          6
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> swap_strategy(44, 24, 8, 6)
+          6
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> swap_strategy(37, 24, 8, 6)
+          6
           """,
           'hidden': False,
           'locked': False
@@ -88,11 +91,7 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      >>> try:
-      ...     from utils import final_win_rate
-      ... except ImportError:
-      ...     from tests.utils import final_win_rate
-      >>> print('\nFinal strategy win rate:', final_win_rate())
+      >>> from hog import *
       """,
       'teardown': '',
       'type': 'doctest'
